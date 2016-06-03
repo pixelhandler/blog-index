@@ -10,7 +10,7 @@ end
 
 def get_html(revision_key)
   redis = store
-  project = "passenger"
+  project = "my-app" # name from ember app's package.json file
   revision_key = params[:revision_key] || redis.get("#{project}:index:current")
   redis.get("#{project}:index:#{revision_key}")
 end
