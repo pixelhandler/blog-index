@@ -19,7 +19,7 @@ A log file is generated at /logs/sinatra.log
 
 In `app.rb` set the name of the app (See your Ember.js app's package.json file)
 
-    project = "my-app"
+    project = "passenger"
 
 ## Links
 

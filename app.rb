@@ -10,7 +10,7 @@ end
 
 def get_html(revision_key)
   redis = store
-  project = "my-app" # name from ember app's package.json file
+  project = "passenger"
   revision_key = params[:revision_key] || redis.get("#{project}:index:current")
   redis.get("#{project}:index:#{revision_key}")
 end
@@ -19,10 +19,7 @@ def store
   if ENV['REDIS_URL'].nil? || ENV['REDIS_URL'].empty?
     redis = Redis.new()
   else
-    if !ENV['REDIS_SECRET'].nil?
-      redis = Redis.new(:url => ENV['REDIS_URL'], :password => ENV['REDIS_SECRET'])
-    else
-      redis = Redis.new(:url => ENV['REDIS_URL'])
-    end
+    # ENV['REDIS_URL'] needs 'redis://api.mwwondemand.com:6379/12' on prod
+    redis = Redis.new(:url => ENV['REDIS_URL']) # :password => ENV['REDIS_SECRET']
   end
 end
